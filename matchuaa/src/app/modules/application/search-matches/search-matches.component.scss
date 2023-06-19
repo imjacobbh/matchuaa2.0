@@ -10,7 +10,7 @@
   width: 100px;
   height: 100px;
   /** height is required as absolute value **/
-  background: linear-gradient(330deg, rgba(229, 38, 135, 1) 64%, rgba(94, 23, 235, 1) 94%);
+	background: linear-gradient(330deg, #0083ab 80%, #00ff77 95%);
   border-radius: 100px;
   position:relative;
   animation: pulse 2000ms linear infinite;
@@ -30,7 +30,7 @@
   width: 100px;
   height: 100px;
   /** height is required as absolute value **/
-  background: linear-gradient(330deg, rgba(229, 38, 135, 1) 64%, rgba(94, 23, 235, 1) 94%);
+	background: linear-gradient(330deg, #0083ab 80%, #00ff77 95%);
   border-radius: 100px;
   position:relative;
   animation: pulse 2000ms linear infinite;
@@ -61,7 +61,7 @@
   width: 100px;
   height: 100px;
   border-radius: 100px;
-  background: linear-gradient(330deg, rgba(229, 38, 135, 1) 64%, rgba(94, 23, 235, 1) 94%);
+	background: linear-gradient(330deg, #0083ab 80%, #00ff77 95%);
 }
 
 .load:after {
@@ -488,6 +488,12 @@
 
 mat-chip {
   margin-bottom: 2px;
-  background: linear-gradient(330deg, rgba(229, 38, 135, 1) 64%, rgba(94, 23, 235, 1) 94%);
+	background: linear-gradient(330deg, #0083ab 80%, #00ff77 95%);
   color: white !important;
+}
+.tutor {
+  background: linear-gradient(330deg, rgb(14, 3, 94) 64%, rgb(102, 6, 6) 94%) !important;
+}
+.search-tutor{
+  background: linear-gradient(330deg, rgb(167, 17, 82) 64%, rgb(102, 6, 83) 94%) !important;
 }

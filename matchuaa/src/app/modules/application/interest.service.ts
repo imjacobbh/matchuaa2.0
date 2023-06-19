@@ -14,8 +14,8 @@ export class InterestService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
 
-  get interestList$(): Observable<Interest[]> {
-    return this.http.get<any>(`${environment.API_URL}/interests`).pipe(
+  interestList$(carreraId: number): Observable<Interest[]> {
+    return this.http.get<any>(`${environment.API_URL}/interests/${carreraId}`).pipe(
       map((res) => {
         return res.data as Interest[];
       }),

@@ -1,3 +1,5 @@
+import { NgIf } from "@angular/common";
+
 export interface UserCredentials {
     email?: string | undefined | null;
     password?: string | undefined | null;
@@ -12,7 +14,8 @@ export interface UserRegister {
     user?: string | undefined | null,
     email?: string | undefined | null,
     pass?: string | undefined | null,
-    date?: string | undefined | null
+    date?: string | undefined | null,
+    carrera?: number | undefined
 }
 
 export interface UserInformation {
@@ -21,7 +24,8 @@ export interface UserInformation {
     description: string | null,
     zodiac_sign: number | null,
     username: string | null,
-    email: string | null
+    email: string | null,
+    carrera: number | null,
     location: string | null,
     id_sexual_orientation: number | null | undefined,
     gender: number | null,

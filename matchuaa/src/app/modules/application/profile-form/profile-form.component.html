@@ -74,12 +74,12 @@
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        Preferencias Sexuales
+                        Preferencias Tutorías
                     </mat-panel-title>
-
+                    <!-- TODO: change orientations to role-->
                 </mat-expansion-panel-header>
                 <mat-form-field appearance="outline">
-                    <mat-label>Selecciona tu orientación sexual</mat-label>
+                    <mat-label>Selecciona tu rol</mat-label>
                     <mat-select [(ngModel)]="this.user!.user!.id_sexual_orientation" name="id_sexual_orientation">
                         <mat-option *ngFor="let o of orientations$ | async, let i = index"
                             [value]="o.id_Sexual_orientation">{{o.name}}</mat-option>
@@ -104,21 +104,27 @@
 
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Intereses
+                    <mat-panel-title *ngIf="this.user!.user!.id_sexual_orientation == 2 else help">
+                        Puedo ayudar en
                     </mat-panel-title>
-
+                    <ng-template #help>
+                        <mat-panel-title>
+                            Necesito ayuda en
+                        </mat-panel-title>
+                    </ng-template>
                 </mat-expansion-panel-header>
 
 
+                <ng-container *ngFor="let semester of getUniqueSemesters()">  
+                    <p>Semestre #{{semester}}</p>
                 <mat-chip-list multiple id="chipList" [selectable]="true">
-
-                    <mat-chip *ngFor="let chip of interestList" [selected]="chip.state ?? false"
+                    <mat-chip *ngFor="let chip of getSemesterInterests(semester)" [selected]="chip.state ?? false"
                         (click)="chip.state=!chip.state ;">
                         {{chip.name}}
                     </mat-chip>
                 </mat-chip-list>
                 <br>
+                </ng-container>
             </mat-expansion-panel>
 
             <mat-expansion-panel>
@@ -134,18 +140,24 @@
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
+                    <mat-label>Carrera que estudias </mat-label>
+                    <input matInput placeholder="Tu carrera" disabled [(ngModel)]="carreras[this.user!.user!.carrera!]"
+                        name="carrera" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
                     <mat-label>Fecha de nacimiento 🎂</mat-label>
                     <input matInput placeholder="tu fecha de nacimiento" disabled
                         [(ngModel)]="this.user!.user!.birthdate" name="birthdate" />
                 </mat-form-field>
             </mat-expansion-panel>
             <mat-action-row>
-                <button  mat-raised-button color="primary" (click)="updateProfile()">Guardar</button>
+                <button mat-raised-button color="primary" (click)="updateProfile()">Guardar</button>
             </mat-action-row>
         </mat-accordion>
     </form>
-  
-    <button  mat-raised-button color="warn" (click)="logout()">Cerrar Sesión</button>
+
+    <button mat-raised-button color="warn" (click)="logout()">Cerrar Sesión</button>
 
 
 </div>

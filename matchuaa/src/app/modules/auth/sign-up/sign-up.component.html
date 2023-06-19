@@ -29,6 +29,16 @@
                             </mat-error>
                         </mat-form-field>
 
+                        <mat-form-field  class="formGroup" >
+                            <mat-label>Selecciona la carrera que estudias</mat-label>
+                            <mat-select name="carreraF"  formControlName="carreraF">
+                                <mat-option *ngFor="let s of carreras, let i = index" [value]="i">{{s}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="carreraF?.errors?.['required']">
+                              Carrera requerida
+                            </mat-error>
+                        </mat-form-field>
+
                         <mat-form-field class="formGroup">
                             <input matInput type="password" placeholder="Contraseña" formControlName="pass" />
                             <mat-error *ngIf="pass?.errors?.['required']">

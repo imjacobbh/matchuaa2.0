@@ -46,15 +46,21 @@
             </button>
         </div>
         <div class="card2 w-100">
-            <h5>{{user.user.username}}</h5>
-            <p> {{user.user.location}} 🇲🇽</p>
+                        <h5>{{user.user.username}}  <mat-chip  class="tutor" *ngIf="user!.user!.id_sexual_orientation  ==2 else notutor">tutor</mat-chip>
+            <ng-template #notutor>
+                <mat-chip  class="search-tutor" *ngIf="user!.user!.id_sexual_orientation  ==3">busca tutor</mat-chip>
+            </ng-template></h5>
+            <p><b>{{carreras[user.user!.carrera!]}}</b></p>
             <div class="size">
                 <h6 class="fw-bold">Descripción</h6>
                 <div class="diff_sizes d-flex justify-content-between " style="white-space: pre-line">
                     {{user.user.description}} </div>
             </div>
             <div class="color">
-                <h6 class="mt-2 fw-bold">Intereses</h6>
+                <h6 class="mt-2 fw-bold" *ngIf="user.user.id_sexual_orientation == 2 else needsHelp">Puede ayudar en</h6>
+                <ng-template #needsHelp>
+                    <h6 class="mt-2 fw-bold"  > Necesita ayuda en</h6>
+                </ng-template>
                 <div class="diff_color gap-3">
                     <mat-chip *ngFor="let interest of user.interest">{{interest.name}}</mat-chip>
                 </div>

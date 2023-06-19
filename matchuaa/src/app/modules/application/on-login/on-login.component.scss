@@ -3,7 +3,7 @@ mat-sidenav-container {
   min-height: 100%;
 
   mat-sidenav {
-    background: linear-gradient(330deg, rgba(229, 38, 135, 1) 64%, rgba(94, 23, 235, 1) 94%);
+  	background: linear-gradient(330deg, #0083ab 100%, #00ff77 95%);
     color: white;
 
     mat-nav-list {
@@ -40,7 +40,7 @@ mat-icon {
 }
 
 .active {
-  background: linear-gradient(330deg, rgba(229, 38, 135, 1) 64%, rgba(94, 23, 235, 1) 94%);
+	background: linear-gradient(330deg, #0083ab 80%, #00ff77 95%);
   color: white !important;
 }
 

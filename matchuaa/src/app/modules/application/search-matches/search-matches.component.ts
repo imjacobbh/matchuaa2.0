@@ -17,7 +17,10 @@ export class SearchMatchesComponent implements OnInit {
   constructor(private userService: UserServiceService, private toast: HotToastService) { }
 
   no_matches: boolean = false;
-
+  carreras: string[] = ["Ingeniería en Sistemas Computacionales", "Filosofía", "Artes Escenicas", "Computación Inteligente", 
+  "Licenciatura en Informatica", "Biología", "Quimica", "Biotecnología", "Robotica", "Biomedico", "Enfermería", 
+  "Diseño Grafico", "Diseño Industrial", "Medicina"]
+  
   user: UserProfile | null = null
   ngOnInit(): void {
     this.userService.getPossibleMatch()

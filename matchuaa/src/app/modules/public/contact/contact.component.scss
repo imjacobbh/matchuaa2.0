@@ -3,7 +3,7 @@
 }
 
 body {
-    background:linear-gradient(330deg, rgba(229,38,135,1) 50%, rgba(94,23,235,1) 95%);
+	background: linear-gradient(330deg, #0083ab 80%, #00ff77 95%);
     color: #fff;
     line-height: 1.6;
     font-family: 'Quicksand', sans-serif;
@@ -28,7 +28,7 @@ ul {
 }
 
 .logo span {
-    color: #7710b3;
+    color: #060b8f;
 }
 
 .contact-wrapper {
@@ -74,7 +74,7 @@ ul {
 }
 
 .contact-form form button {
-    background: #7a068f;
+    background: #060b8f;
     border: 0;
     text-transform: uppercase;
     padding: 1em;
@@ -82,7 +82,7 @@ ul {
 
 .contact-form form button:hover,
 .contact-form form button:focus {
-    background: #750dc4;
+    background: #100dc4;
     color: #fff;
     transition: background-color 1s ease-out;
     outline: 0;
@@ -90,7 +90,7 @@ ul {
 
 /* CONTACT INFO */
 .contact-info {
-    background: rgb(124, 15, 167);
+    background: #060b8f;
 }
 
 .contact-info h4, .contact-info ul, .contact-info p {

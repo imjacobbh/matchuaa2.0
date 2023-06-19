@@ -32,12 +32,18 @@ export function ageValidator(control: AbstractControl): { [key: string]: boolean
 })
 export class SignUpComponent implements OnInit {
 
+  carreras: string[] = ["Ingeniería en Sistemas Computacionales", "Filosofía", "Artes Escenicas", "Computación Inteligente", 
+    "Licenciatura en Informatica", "Biología", "Quimica", "Biotecnología", "Robotica", "Biomedico", "Enfermería", 
+    "Diseño Grafico", "Diseño Industrial", "Medicina"]
+
+
   signUpForm = new FormGroup(
     {
       user: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       date: new FormControl('', [Validators.required]),
       pass: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      carreraF: new FormControl('',[Validators.required]),
       confirmPassword: new FormControl('', Validators.required),
     },
     { validators: passwordsMatchValidator() }
@@ -60,6 +66,10 @@ export class SignUpComponent implements OnInit {
 
   get date(){
     return this.signUpForm.get('date')
+  }
+  
+  get carreraF(){
+    return this.signUpForm.get('carreraF')
   }
   ngOnInit(): void {
   }

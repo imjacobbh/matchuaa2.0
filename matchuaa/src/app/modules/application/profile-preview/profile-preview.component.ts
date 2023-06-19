@@ -13,6 +13,10 @@ import { UserServiceService } from '../user-service.service';
 })
 export class ProfilePreviewComponent implements OnInit {
 
+  carreras: string[] = ["Ingeniería en Sistemas Computacionales", "Filosofía", "Artes Escenicas", "Computación Inteligente", 
+  "Licenciatura en Informatica", "Biología", "Quimica", "Biotecnología", "Robotica", "Biomedico", "Enfermería", 
+  "Diseño Grafico", "Diseño Industrial", "Medicina"]
+
   user: UserProfile | null = null
 
   constructor(private userService: UserServiceService) { }

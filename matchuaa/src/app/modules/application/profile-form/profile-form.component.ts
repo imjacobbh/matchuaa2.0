@@ -23,6 +23,10 @@ export class ProfileFormComponent implements OnInit {
   panelOpenState: boolean = false
   signos: string[] = ["Paso... 😒", "Aries ♈", "Tauro ♉", "Géminis ♊", "Cáncer ♋", "Leo ♌", "Virgo ♍", "Libra ♎", "Escorpión ♏", "Sagitario ♐", "Capricornio ♑", "Acuario ♒", "Piscis ♓"]
 
+  carreras: string[] = ["Ingeniería en Sistemas Computacionales", "Filosofía", "Artes Escenicas", "Computación Inteligente", 
+  "Licenciatura en Informatica", "Biología", "Quimica", "Biotecnología", "Robotica", "Biomedico", "Enfermería", 
+  "Diseño Grafico", "Diseño Industrial", "Medicina"]
+
   estados: string[] = [
     'Aguascalientes',
     'Baja California',
@@ -104,27 +108,27 @@ export class ProfileFormComponent implements OnInit {
           }
         }
         )
-
+        this.interestService.interestList$(this.user?.user.carrera!).pipe(untilDestroyed(this), tap(console.log))
+        .subscribe((interests: Interest[]) => {
+          interests.forEach(element => {
+            element.state = false;
+          });
+          this.user?.interest.forEach((e) => {
+            let index = -1
+            index = interests.findIndex(a => a.id === e.id)
+            if (index != -1) {
+              interests[index].state = true
+            }
+          }
+          )
+          this.interestList = interests;
+        });
       });
 
     this.orientationService.orientations$.pipe(untilDestroyed(this), tap(console.log))
       .subscribe((orientations) => { });
 
-    this.interestService.interestList$.pipe(untilDestroyed(this), tap(console.log))
-      .subscribe((interests: Interest[]) => {
-        interests.forEach(element => {
-          element.state = false;
-        });
-        this.user?.interest.forEach((e) => {
-          let index = -1
-          index = interests.findIndex(a => a.id === e.id)
-          if (index != -1) {
-            interests[index].state = true
-          }
-        }
-        )
-        this.interestList = interests;
-      });
+
   }
 
   updateProfile() {
@@ -162,6 +166,12 @@ export class ProfileFormComponent implements OnInit {
       .subscribe(res => {
         console.log(res)
       });
+  }
+  getUniqueSemesters(): number[] {
+    return [...new Set(this.interestList.map(interest => interest.semester))];
+  }
+  getSemesterInterests(semester: number): Interest[] {
+    return this.interestList.filter(interest => interest.semester === semester);
   }
 }
 
